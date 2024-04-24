@@ -15,9 +15,8 @@ public class InMemoryHistoryManager implements HistoryManager {
             counterOfViewTasks.remove(0);
         }
     }
-
     @Override
     public List<Task> getHistory() {
-        return counterOfViewTasks;
+        return new ArrayList<>(counterOfViewTasks);
     }
 }
