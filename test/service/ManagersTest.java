@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @DisplayName("Утилитарный класс Managers")
 class ManagersTest {
-    Managers managers = new Managers();
 
     @Test
     @DisplayName("Класс всегда возвращает проинициализированные и готовые к работе экземпляры менеджеров")

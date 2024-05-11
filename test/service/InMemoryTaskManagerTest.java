@@ -22,7 +22,6 @@ class InMemoryTaskManagerTest {
     Epic epic1;
     Subtask testSubtask;
 
-
     @BeforeEach
     public void beforeEach() {
         EmptyHistoryManager emptyHistoryManager = new EmptyHistoryManager();
@@ -295,9 +294,25 @@ class InMemoryTaskManagerTest {
         assertEquals(testSubtasks.get(0), testSubtask);
     }
 
-    private class EmptyHistoryManager implements HistoryManager {
+    @Test
+    @DisplayName("меняет ID задачи через сеттер")
+    public void shouldChangeIdOfTaskBySetter() {
+        Task task2 = inMemoryTaskManager.createTask(new Task("задача2", "описание2", TaskStatus.NEW));
+        int testIdBefore = task2.getId();
+        task2.setId(40);
+        int testIdAfter = task2.getId();
+
+        assertEquals(4, testIdBefore);
+        assertEquals(40, testIdAfter);
+    }
+
+    private static class EmptyHistoryManager implements HistoryManager {
         @Override
         public void add(Task task) {
+        }
+
+        @Override
+        public void remove(int id) {
         }
 
         @Override
